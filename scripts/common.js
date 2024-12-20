@@ -1,8 +1,3 @@
-// 컴포넌트 로드
-$('#header').load('views/header.html');
-$('#content').load('views/home.html');
-$('#footer').load('views/footer.html');
-
 $(window).on("load", function(){
   // swiper
   var length = $(".sec3 .swiper-slide").length;
