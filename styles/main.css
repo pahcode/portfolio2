@@ -74,7 +74,7 @@
     position: absolute;
     top: 0; left: 0;
     height: 90px;
-    /* border: 1px solid red; */
+    border: 1px solid pink;
     z-index: 100;
 }
 .header h1 a { height: 100%; } 
@@ -93,7 +93,7 @@
 
 
 
-.header nav {
+nav {
     position: absolute;
     top: 0;
     right: -2000px;
@@ -108,9 +108,12 @@
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: center;
+    gap: 0 30px;
+    padding-right: 20px;
 }
+
 #menu li {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     height: 90px;
 }
 #menu li.active {
@@ -121,6 +124,27 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1;
+    color: #333;
+    transition: color 0.2s;
+}
+#menu:not(:has(.hover)) li.active a {
+    color: #f00;
+}
+#menu li.hover a {
+    color: #f00;
+}
+
+nav .underBar {
+    position: absolute; 
+    bottom: 10px;
+    width: 0;
+    height: 3px; 
+    border-radius: 2px; 
+    background-color: #f00;
+    transition: width 0.5s, left 0.5s;
 }
 
 
@@ -130,7 +154,7 @@
   
 
 /* main */
-.homeContent { background-color: #f5f5db; }
+.homeContent {  }
 
 #fullpage {
     width:100%;
