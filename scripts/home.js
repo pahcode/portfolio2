@@ -51,7 +51,7 @@ var webSwiper = new Swiper(".web .swiper-container", {
 
 // fullpage
 $("#fullpage").fullpage({         
-    responsiveWidth: 1000,
+    // responsiveWidth: 1000,
     // sectionsColor: ["#1bbc9b", "#4BBFC3", "#7BAABE"],
     anchors: ["home", "about", "web", "design", "work", "contact", "foot"],
     menu: "#menu",
@@ -61,7 +61,11 @@ $("#fullpage").fullpage({
         // console.log(destination);
         let num = String(destination);
         // console.log(num);
-        navUnderBar(num);
+        try { 
+            navUnderBar(num); 
+        }catch(err){
+            console.log("navUnderBar 함수가 정의되지 않았습니다");
+        }
         // 빠른전환으로 이벤트중복시 fullpage와 swiper전환시점 분리막기
         $("#fullpage").on("scroll touchmove mousewheel", function(event) {                    
             event.preventDefault();
@@ -86,7 +90,10 @@ $("#fullpage").fullpage({
 var workSwiper = new Swiper(".work .swiper-container", {
     slidesPerView: 3,
     spaceBetween: 30,
+    preventClicks: true,
+    preventClicksPropagation: false,
     centeredSlides: true,
+    slideToClickedSlide: true,      // 클릭한거 가운데로 오게
     loop: true,
     navigation: {
         nextEl: ".swiper-button-next",
@@ -110,3 +117,15 @@ $(document).on("keydown", function(e) {
     }
 });
 
+// resize
+$(window).resize(function(){
+	if( window.innerWidth >= 900 ){
+        $("nav").css("display", "block");
+        $(".header").removeClass("on");
+		$("body").css({ touchAction: "auto" });
+        navUnderBar("active");
+	}else if( window.innerWidth < 900 ){
+        $("nav").css({ display: "none", right: "-55%" });
+		$("body").css({ touchAction: "auto" });
+	}
+});
