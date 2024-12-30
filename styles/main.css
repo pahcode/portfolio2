@@ -211,7 +211,8 @@ nav .underBar {
 
     nav { display: none; position: fixed; right: -55%; height: 100%; width: 55%; background-color: green; animation: none; }
     #menu { flex-direction: column; padding: 80px 0 0; }
-    #menu li { width: 100%; height: auto; padding: 20px 0; }
+    #menu li { width: 100%; height: auto; }
+    #menu li a { padding: 20px 0; }
     nav .underBar { display: none; }
 
 }
@@ -250,6 +251,7 @@ nav .underBar {
     top: 50%;
     left: 0;
 }
+#leftFloatMenu .arr { display: none; }
 #leftFloatMenu ul {  }
 #leftFloatMenu ul li.active {  }
 #leftFloatMenu ul li.active a { color: #f00; }

@@ -3,9 +3,10 @@ function navUnderBar(act){
   if(act == "active" || act == "hover") li = $("#menu li." + act);
   else li = $("#menu li:nth-child(" + act + ")");
   let width = li.innerWidth();
+  let liOffset = li.offset().left;
   let ulOffset = $("#menu").offset().left;
-  let offset = Math.floor((li.offset().left) - ulOffset);
-  $("nav .underBar").css({width: width, left: offset});
+  let left = Math.floor(liOffset - ulOffset);
+  $("nav .underBar").css({width: width, left: left});
 };
 
 // nav hover
@@ -21,11 +22,6 @@ $("#menu li a").hover(
     navUnderBar("active");
   }
 );
-
-// nav UnderBar
-setTimeout(function(){
-  navUnderBar("active");
-}, 1200);
 
 // nav mobile
 $(document).on("click","#navBtnOpen",function(){

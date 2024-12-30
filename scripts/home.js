@@ -55,19 +55,17 @@ $("#fullpage").fullpage({
     // sectionsColor: ["#1bbc9b", "#4BBFC3", "#7BAABE"],
     anchors: ["home", "about", "web", "design", "work", "contact", "foot"],
     menu: "#menu",
-    // controlArrows: true,
-	// controlArrowsHTML: [
-	// 	'<div class="fp-arrow"></div>', 
-	// 	'<div class="fp-arrow"></div>'
-	// ], 이전 다음 기능 찾아보기
     scrollingSpeed: 1000,
     // scrollBar: true,
     onLeave: function(origin, destination, direction) {
-        // console.log(destination);
         let num = String(destination);
-        // console.log(num);
         try { 
-            navUnderBar(num);
+            setTimeout(function(){
+                navUnderBar(num);
+                leftMenuActive(num);
+                leftArrDisplay(num);
+                leftArrMove();
+            }, 100);
         }catch(err){
             console.log("navUnderBar 함수가 정의되지 않았습니다");
         }
@@ -140,28 +138,45 @@ function leftMenuActive(act){
     let li = $("#leftMenu li:nth-child(" + act + ")");
     $("#leftMenu li").removeClass("active");
     li.addClass("active");
-  }
+}
+function leftArrDisplay(num){
+    if(num == "1"){
+        $("#leftFloatMenu .next").css("display", "block");
+        $("#leftFloatMenu .prev").css("display", "none");
+    }else if(num == "6"){
+        $("#leftFloatMenu .prev").css("display", "block");
+        $("#leftFloatMenu .next").css("display", "none");
+    }else{
+        $("#leftFloatMenu .arr").css("display", "block");
+    }
+}
 
-// function leftMenuActive(){
-//     // let active = $("#menu li.acitve").data("menuanchor");
-//     let active = $("#menu li.active").data("menuanchor");
-//     console.log(active);
-// }
-// leftMenuActive();
-
-$(document).on("click","#leftMenu li a", function(){
-    console.log("동작1");
-	// leftMenuActive();
-});
+// left-menu-prev-next
+function leftArrMove(){
+    let num = $("#menu li.active").index() + 1;
+    if(num != "1"){
+        let prev = String(num - 1)
+        let href = $("#menu li:nth-child(" + prev + ")").data("menuanchor");
+        $("#leftFloatMenu .prev a").attr("href", "#" + href);
+    }
+    if(num != "6"){
+        let next = String(num + 1)
+        let href = $("#menu li:nth-child(" + next + ")").data("menuanchor");
+        $("#leftFloatMenu .next a").attr("href", "#" + href);
+    }
+}
 
 $(document).on("click","#leftFloatMenu .arr", function(){
-	let active;
+    leftArrMove();
 });
 
-
-// nav active
+// nav setting
 setTimeout(function(){
-    let num = $("#menu li.active").index() + 1;
-    leftMenuActive(num);
+    let num = String($("#fullpage .section.active").index() + 1);
+    let li = $("#menu li:nth-child(" + num + ")");
+    if(!li.hasClass("active")) li.addClass("active");
     navUnderBar(num);
-}, 2000);
+    leftMenuActive(num);
+    leftArrDisplay(num);
+    leftArrMove();
+}, 1000);
