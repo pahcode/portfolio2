@@ -140,7 +140,7 @@ nav {
 nav .underBar {
     position: absolute; 
     bottom: 10px;
-    width: 0;
+    /* width: 0; */
     height: 3px; 
     border-radius: 2px; 
     background-color: #f00;
@@ -239,7 +239,20 @@ nav .underBar {
     height: 100%;  
   }
 
-
-
+/* work */
 .section.work .swiper-slide { opacity: 0.5; }
 .section.work .swiper-slide-active { opacity: 1; }
+
+
+/* left-menu */
+#leftFloatMenu { 
+    position: fixed;
+    top: 50%;
+    left: 0;
+}
+#leftFloatMenu ul {  }
+#leftFloatMenu ul li.active {  }
+#leftFloatMenu ul li.active a { color: #f00; }
+
+
+

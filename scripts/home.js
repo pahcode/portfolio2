@@ -55,6 +55,11 @@ $("#fullpage").fullpage({
     // sectionsColor: ["#1bbc9b", "#4BBFC3", "#7BAABE"],
     anchors: ["home", "about", "web", "design", "work", "contact", "foot"],
     menu: "#menu",
+    // controlArrows: true,
+	// controlArrowsHTML: [
+	// 	'<div class="fp-arrow"></div>', 
+	// 	'<div class="fp-arrow"></div>'
+	// ], 이전 다음 기능 찾아보기
     scrollingSpeed: 1000,
     // scrollBar: true,
     onLeave: function(origin, destination, direction) {
@@ -62,7 +67,7 @@ $("#fullpage").fullpage({
         let num = String(destination);
         // console.log(num);
         try { 
-            navUnderBar(num); 
+            navUnderBar(num);
         }catch(err){
             console.log("navUnderBar 함수가 정의되지 않았습니다");
         }
@@ -129,3 +134,34 @@ $(window).resize(function(){
 		$("body").css({ touchAction: "auto" });
 	}
 });
+
+// left-menu
+function leftMenuActive(act){
+    let li = $("#leftMenu li:nth-child(" + act + ")");
+    $("#leftMenu li").removeClass("active");
+    li.addClass("active");
+  }
+
+// function leftMenuActive(){
+//     // let active = $("#menu li.acitve").data("menuanchor");
+//     let active = $("#menu li.active").data("menuanchor");
+//     console.log(active);
+// }
+// leftMenuActive();
+
+$(document).on("click","#leftMenu li a", function(){
+    console.log("동작1");
+	// leftMenuActive();
+});
+
+$(document).on("click","#leftFloatMenu .arr", function(){
+	let active;
+});
+
+
+// nav active
+setTimeout(function(){
+    let num = $("#menu li.active").index() + 1;
+    leftMenuActive(num);
+    navUnderBar(num);
+}, 2000);
