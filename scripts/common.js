@@ -12,7 +12,7 @@ $(window).on("load", function(){
     );
     $("main").load("views/home.html");
     $("footer").load("views/footer.html");
-  }, 5000);
+  }, 5200);
 
   // 인트로 안나오게(개발용)
   // $("header").load("views/header.html");
