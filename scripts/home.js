@@ -51,7 +51,7 @@ var webSwiper = new Swiper(".web .swiper-container", {
 
 // fullpage
 $("#fullpage").fullpage({         
-    // responsiveWidth: 1000,
+    // responsiveHeight: 600,
     // sectionsColor: ["#1bbc9b", "#4BBFC3", "#7BAABE"],
     anchors: ["home", "about", "web", "design", "work", "contact", "foot"],
     menu: "#menu",
@@ -59,12 +59,13 @@ $("#fullpage").fullpage({
     // scrollBar: true,
     onLeave: function(origin, destination, direction) {
         let num = String(destination);
+        if(num == "7") num = "6";
         try { 
             setTimeout(function(){
                 navUnderBar(num);
                 leftMenuActive(num);
-                leftArrDisplay(num);
-                leftArrMove();
+                leftArrLink();
+                btmMenuActive(num);
             }, 100);
         }catch(err){
             console.log("navUnderBar 함수가 정의되지 않았습니다");
@@ -126,6 +127,7 @@ $(window).resize(function(){
         $("nav").css("display", "block");
         $(".header").removeClass("on");
 		$("body").css({ touchAction: "auto" });
+        $("body").off("scroll touchmove mousewheel");
         navUnderBar("active");
 	}else if( window.innerWidth < 900 ){
         $("nav").css({ display: "none", right: "-55%" });
@@ -139,20 +141,9 @@ function leftMenuActive(act){
     $("#leftMenu li").removeClass("active");
     li.addClass("active");
 }
-function leftArrDisplay(num){
-    if(num == "1"){
-        $("#leftFloatMenu .next").css("display", "block");
-        $("#leftFloatMenu .prev").css("display", "none");
-    }else if(num == "6"){
-        $("#leftFloatMenu .prev").css("display", "block");
-        $("#leftFloatMenu .next").css("display", "none");
-    }else{
-        $("#leftFloatMenu .arr").css("display", "block");
-    }
-}
 
 // left-menu-prev-next
-function leftArrMove(){
+function leftArrLink(){
     let num = $("#menu li.active").index() + 1;
     if(num != "1"){
         let prev = String(num - 1)
@@ -167,16 +158,25 @@ function leftArrMove(){
 }
 
 $(document).on("click","#leftFloatMenu .arr", function(){
-    leftArrMove();
+    leftArrLink();
 });
 
-// nav setting
+// nav initial settings
 setTimeout(function(){
     let num = String($("#fullpage .section.active").index() + 1);
     let li = $("#menu li:nth-child(" + num + ")");
     if(!li.hasClass("active")) li.addClass("active");
     navUnderBar(num);
     leftMenuActive(num);
-    leftArrDisplay(num);
-    leftArrMove();
+    leftArrLink();
+    btmMenuActive(num);
 }, 1000);
+
+// bottom-nav
+function btmMenuActive(act){
+    let li = $("#btmMenu li:nth-child(" + act + ")");
+    $("#btmMenu li").removeClass("active");
+    li.addClass("active");
+}
+
+
