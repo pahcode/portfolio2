@@ -9,7 +9,7 @@ function navUnderBar(act){
   $("nav .underBar").css({width: width, left: left});
 };
 
-// nav hover
+// nav_hover
 $("#menu li a").hover(
   function() {
     let li = $(this).parent();
@@ -23,7 +23,7 @@ $("#menu li a").hover(
   }
 );
 
-// nav mobile
+// nav_mobile
 $(document).on("click","#navBtnOpen",function(){
 	navOpenMobile();
 });
@@ -33,7 +33,7 @@ $(document).on("click",".header .dim",function(){
 
 function navOpenMobile(){
 	if(!$(".header").hasClass("on")){
-		$("nav").css("display", "block").animate({right: "0"}, 300);
+		$("nav").css("display", "block").animate({right: "0"}, 500);
     $(".header .dim").css("background", "rgba(0, 0, 0, 0.4)");
     $("body").css({ touchAction: "none" });
     $("body").on("scroll touchmove mousewheel", function(event) {
@@ -42,7 +42,7 @@ function navOpenMobile(){
     });
  		$(".header").addClass("on");
 	}else{
-		$("nav").animate({right: "-280px"}, 300, function(){
+		$("nav").animate({right: "-280px"}, 500, function(){
 			$("nav").css("display", "none");
 			$(".header .dim").css("background", "rgba(0, 0, 0, 0)");
 		});
