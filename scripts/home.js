@@ -61,11 +61,12 @@ $("#fullpage").fullpage({
         let num = String(destination);
         if(num == "7") num = "6";
         try { 
-            setTimeout(function(){
+            setTimeout(() => {
                 navUnderBar(num);
                 leftMenuActive(num);
                 leftArrLink();
                 btmMenuActive(num);
+                if(num == "2") skillDrawAll();
             }, 100);
         }catch(err){
             console.log("navUnderBar 함수가 정의되지 않았습니다");
@@ -128,7 +129,9 @@ $(window).resize(function(){
         $(".header").removeClass("on");
 		$("body").css({ touchAction: "auto" });
         $("body").off("scroll touchmove mousewheel");
+        $(".profile").removeClass("on");
         navUnderBar("active");
+        if($(".popProfile").hasClass("on")) $(".popProfile").removeClass("on").css({ display: "none" });
 	}else if( window.innerWidth < 900 ){
         $("nav").css({ display: "none", right: "-55%" });
 		$("body").css({ touchAction: "auto" });
@@ -162,7 +165,7 @@ $(document).on("click","#leftFloatMenu .arr", function(){
 });
 
 // nav initial settings
-setTimeout(function(){
+setTimeout(() => {
     let num = String($("#fullpage .section.active").index() + 1);
     let li = $("#menu li:nth-child(" + num + ")");
     if(!li.hasClass("active")) li.addClass("active");
@@ -170,6 +173,7 @@ setTimeout(function(){
     leftMenuActive(num);
     leftArrLink();
     btmMenuActive(num);
+    clearTimeout();
 }, 1000);
 
 // bottom-nav
@@ -179,4 +183,43 @@ function btmMenuActive(act){
     li.addClass("active");
 }
 
+// about skill percent
+function skillDraw(max, classname){
+    var i = 1;
+    var func1 = setInterval(function(){
+        if(i <= max){
+            $(".skill ul li."+ classname +" .circle .percent").css({
+                "background": "conic-gradient(#ffd71f 0% "+i+"%, rgba(255,255,255,0) "+i+"% 100%)"
+            });
 
+            i++;
+        } else{
+            clearInterval(func1);
+        }
+    },20);
+}
+function skillDrawAll(){
+    clearTimeout();
+    setTimeout(() => { 
+        skillDraw(100, "html");
+        skillDraw(95, "css");
+        skillDraw(80, "js");
+        skillDraw(85, "jq");
+        skillDraw(50, "sql");
+        skillDraw(70, "php");
+        skillDraw(50, "react");
+        skillDraw(90, "ps");
+        skillDraw(80, "ai");
+    }, 1500);
+}
+
+// about profile-button
+$(document).on("click",".profileBtn .open", function(){
+    $(".popProfile").addClass("on").stop().fadeIn(500);
+});
+$(document).on("click",".popProfile .close", function(){
+    $(".popProfile").removeClass("on").stop().fadeOut(500);
+});
+$(document).on("click",".popProfile .dim", function(){
+    $(".popProfile").removeClass("on").stop().fadeOut(500);
+});
