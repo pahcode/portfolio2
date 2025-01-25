@@ -306,7 +306,7 @@ function workSwiperStep(idx){
                 step: "05", 
                 title: "하모니렌트카", 
                 desc: "신차견적, 오토리스, 금융리스, 오토론, 중고차 할부 정보를 제공하는 자동차 솔루션 사이트 입니다.",
-                period: "10일일",
+                period: "10일",
                 day: "23. 7. 7 ~ 7. 17",
                 func: "반응형 웹 | 차량 데이터 JSONP 연동 | B2C 비교견적 시스템 | 검색 필터 | ADMIN 기능",
                 role: "<b>담당업무 Front-end</b> (그 외 Back-end 1명, Design 1명)",
