@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 30 30">
+  <defs>
+    <style>
+      .st0 {fill: #f5d02d;}
+    </style>
+  </defs>
+  <path class="st0" d="M28,13h-11V2c0-1.1-.9-2-2-2s-2,.9-2,2v11H2c-1.1,0-2,.9-2,2s.9,2,2,2h11v11c0,1.1.9,2,2,2s2-.9,2-2v-11h11c1.1,0,2-.9,2-2s-.9-2-2-2Z"/>
+</svg>
