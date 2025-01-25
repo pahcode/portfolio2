@@ -30,24 +30,22 @@ $(document).on("click","#navBtnOpen",function(){
 $(document).on("click",".header .dim",function(){
 	navOpenMobile();
 });
+$(document).on("click",".header.on #menu li a",function(){
+	navOpenMobile();
+});
 
 function navOpenMobile(){
 	if(!$(".header").hasClass("on")){
 		$("nav").css("display", "block").animate({right: "0"}, 500);
     $(".header .dim").css("background", "rgba(0, 0, 0, 0.4)");
-    $("body").css({ touchAction: "none" });
-    $("body").on("scroll touchmove mousewheel", function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-    });
- 		$(".header").addClass("on");
+    $(".header").addClass("on");
+    notScrollOn();
 	}else{
 		$("nav").animate({right: "-280px"}, 500, function(){
 			$("nav").css("display", "none");
 			$(".header .dim").css("background", "rgba(0, 0, 0, 0)");
 		});
-		$("body").css({ touchAction: "auto" });
-    $("body").off("scroll touchmove mousewheel");
 		$(".header").removeClass("on");
+		notScrollOff();
 	}
 };
