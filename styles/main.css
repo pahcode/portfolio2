@@ -1670,7 +1670,7 @@ h2 .mobile { display: none; }
 .slideBox .title::before { 
     content: ""; 
     position: absolute; 
-    top: -30px; 
+    top: -29px; 
     right: 34px;
     width: 31px;
     height: 56px;
