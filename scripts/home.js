@@ -81,11 +81,9 @@ var workSwiper = new Swiper(".workSlide .swiper", {
     mousewheel: false,
     on: {
         init: function() {
-            console.log("work 스와이프 init 발동");
             workSwiperStep(0);
         },
         activeIndexChange: function() {
-            console.log(this.realIndex);
             workSwiperStep(this.realIndex);
         }
     }, 
@@ -364,7 +362,6 @@ function workSwiperStep(idx){
     clearTimeout();
     $(".section.work").addClass("blind");
     setTimeout(() => { 
-        console.log("실행됨");
         $(".slideBox .step").text(items.step)
         $(".slideBox h3").text(items.title)
         $box.find(".desc").html(items.desc);
@@ -381,6 +378,26 @@ function workSwiperStep(idx){
         $box.find(".link").attr("href", items.link);
         $(".section.work").removeClass("blind");
     }, 300);
-
-    
 };
+
+// contact form check
+$(document).on("click", "#contactApply", function(){
+	let mailChk = /^([A-Za-z0-9_\.-]+)@([A-Za-z0-9_-]+)(\.[A-Za-z0-9_-]+){1,2}$/;
+	if($("input[name=name]").val() == ""){
+		alert("이름을 입력해 주세요.");
+		$("input[name=name]").focus();
+		return false;
+	}else if(!mailChk.test($("input[name=mail]").val())){
+		alert("이메일을 확인해주세요.");
+		$("input[name=mail]").focus();
+		return false;
+	}else if($("input[name=title]").val() == ""){
+		alert("제목을 입력해 주세요.");
+		$("input[name=title]").focus();
+		return false;
+	}else if($("textarea[name=memo]").val() == ""){
+		alert("내용을 입력해 주세요.");
+		$("textarea[name=memo]").focus();
+		return false;
+	}
+});
