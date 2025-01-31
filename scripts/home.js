@@ -228,17 +228,42 @@ function webSwiperStep(idx){
     let items = content.items[idx];
     let $box = $(".section.web .txtBox");
     let tools = "";
+    let cnt = 0;
     $box.stop().animate(
         { opacity: "0" }, 300, function(){
+            console.log(cnt);
             $box.find(".tit .step").text(items.step);
             $box.find(".tit h3").text(items.title);
             $box.find(".tit .sort").text(items.sort);
-            $box.find(".explain .date").text(items.date);
-            $box.find(".explain .sub").html(items.sub);
-            $.each(items.tool, function(idx, item){
-                tools += "<li class='"+ item +"'></li>";
-            });
-            $box.find(".tool ul").html(tools);
+            if(window.innerWidth > 700){
+                $box.find(".explain .date").text(items.date);
+                $box.find(".explain .sub").html(items.sub);
+                if(cnt == 0){
+                    $.each(items.tool, function(idx, item){
+                        tools += "<li class='"+ item +"'></li>";
+                    });
+                }
+                $box.find(".tool ul").html(tools);
+            }else{
+                if($(".webSlide .swiper-slide").eq(idx).find(".txtBox.m").length == 0){
+                    let tag = '<div class="txtBox m">';
+                        tag += '    <div class="explain">';
+                        tag += '        <h4>INTRODUCTION</h4>';
+                        tag += '        <span class="date">' + items.date + '</span>';
+                        tag += '        <span class="sub">' + items.sub + '</span>';
+                        tag += '    </div>';
+                        tag += '    <div class="tool">';
+                        tag += '        <h4>USE-Tools</h4>';
+                        tag += '        <ul>';
+                        $.each(items.tool, function(idx, item){
+                            tag += '        <li class="' + item + '"></li>';
+                        });
+                        tag += '        </ul>';
+                        tag += '    </div>';
+                        tag += '</div>';
+                    $(".webSlide .swiper-slide").eq(idx).append(tag);
+                }
+            }
             if(items.detail){
                 $(".popWeb .imgBox img").attr("src", "images/web/detail" + items.detail + ".jpg");
                 $(".detailBtn").removeClass("off");
@@ -249,6 +274,7 @@ function webSwiperStep(idx){
             else $box.find(".link").text("사이트 이동");
             $box.find(".link").attr("href", items.link);    
             $(this).stop().animate({ opacity: "1" }, 400);
+            cnt++;
         }
     );
 };
