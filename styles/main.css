@@ -84,17 +84,14 @@
     animation: visOpacity 0.5s linear;
     animation-fill-mode: forwards;
 }
-.logo {  } 
-.logo svg { height: 100%; }
-.logo svg text {
-    font-family: 'Righteous';
-    font-size: 28px; font-weight: 700; letter-spacing: 1.2px;
-    fill: #333;
-}
-.logo svg .small {
-    font-size: 16px;
-    fill: #a1a1a1;
-}
+.logo { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px; 
+    height: 100%; 
+} 
+.logo img { width: 162px; }
 
 #navBtnOpen { display: none; }
 
@@ -113,7 +110,7 @@ nav {
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: center;
-    gap: 0 32px;
+    gap: 0 36px;
     padding-right: 20px;
 }
 
@@ -269,7 +266,8 @@ h2 .mobile { display: none; }
     h2 .mobile { 
         display: block; 
         position: relative;
-        font-size: 16px;
+        font-family: 'Righteous';
+        font-size: 17px;
         font-weight: bold; 
         color: transparent;
         overflow: hidden;
@@ -347,8 +345,6 @@ h2 .mobile { display: none; }
     height: 90px;
     z-index: 101;
 }
-.logo.white svg text { fill: #fff; }
-.logo.white svg .small { fill: #fff; }
 
 
 
@@ -445,6 +441,7 @@ h2 .mobile { display: none; }
     left: 0;
     width: 100%;
     height: 100%;
+    font-family: 'Righteous';
     color: #6c84ff;
 }
 
@@ -564,7 +561,7 @@ h2 .mobile { display: none; }
     .section.home .spriteIco span:nth-child(8) { margin-top: 111px; margin-left: 247px; }
     .section.home .spriteIco span:nth-child(9) { margin-top: 79px; margin-left: 323px; }
     .section.home .txtBox .subTit span { font-size: 7vw; }
-    .section.home .txtBox .mainTit { margin-bottom: 4vh; }
+    .section.home .txtBox .mainTit { margin-bottom: 5vh; }
     .section.home .txtBox .mainTit span { font-size: 12.5vw; }
     .section.home .txtBox h3 span { font-size: 3vw; }
     .section.home .txtBox p span { font-size: 2.3vw; }
@@ -784,7 +781,7 @@ h2 .mobile { display: none; }
 .section.about .right .skill ul li.react .circle .icon { background-image: url(../images/about/skill_react.svg);  }
 .section.about .right .skill ul li.ps .circle .icon { background-image: url(../images/about/skill_ps.svg);  }
 .section.about .right .skill ul li.ai .circle .icon { background-image: url(../images/about/skill_ai.svg);  }
-.section.about .right .skill ul li .name { font-size: 11px; }
+.section.about .right .skill ul li .name { font-size: 11px; color: #333; }
 
 .section.about .right .expBox {
     display: flex;
@@ -840,8 +837,6 @@ h2 .mobile { display: none; }
     .section.about .left { width: 100%; margin-bottom: 5vh; padding-left: 0; }
     .section.about h2 { margin-bottom: 0; padding-top: 0; padding-left: 0; }
     .section.about .profile { display: none; }
-
-
     
     .popProfile .popView { 
         width: 90%;
@@ -985,11 +980,20 @@ h2 .mobile { display: none; }
     .section.about .right .skill ul li { width: 20%; }
     .section.about .right .skill ul li .circle { margin-bottom: 0.8vh; }
 
-    .section.about .right .expBox ul { gap: 1.5vh 0; }
+    .section.about .right .expBox ul { gap: 1vh 0; }
     .section.about .right .expBox .date { font-size: 11px; }
     .section.about .right .expBox .main { font-size: 14px; }
     .section.about .right .expBox .sub { font-size: 12px; }
     .section.about .right .expBox .edu li:last-child .sub { width: 65%; }
+}
+
+@media screen and (max-width: 400px) {
+    .section.about .right h4 { margin-bottom: 15px; font-size: 13px; }
+    .section.about .right .skill ul li .circle { width: 40px; height: 40px; }
+    .section.about .right .skill ul li .circle .icon { width: 32px; height: 32px; }
+    .section.about .right .skill ul li .name { font-size: 10px; }
+    .section.about .right .expBox .main { font-size: 13px; }
+    .section.about .right .expBox .sub { font-size: 11px; }
 }
 
 
@@ -1038,6 +1042,7 @@ h2 .mobile { display: none; }
     background-color: #fff;
 }
 .webSlide .swiper-slide img { max-width: 100%; }
+.webSlide .txtBox.m { display: none; }
 
 .webSlide .phone .top {
     position: absolute;
@@ -1287,6 +1292,27 @@ h2 .mobile { display: none; }
         background-color: rgba(55,55,55,.7);
     }
     .webSlide .swiper-slide img { width: 100%; }
+    .webSlide .txtBox.m { 
+        display: block;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0 4vw;
+    }
+    .webSlide .txtBox.m h4 { margin-bottom: 10px; padding-left: 28px; font-size: 12px; font-weight: normal; color: #fff; }
+    .webSlide .txtBox.m .explain { margin-bottom: 3vh; margin-left: 0; line-height: 1.3; }
+    .fp-viewing-web .webSlide .txtBox.m .explain { animation: visOpacity 1s both 0.3s ease; }
+    .webSlide .txtBox.m .tool { margin-left: 0; }
+    .fp-viewing-web .webSlide .txtBox.m .tool { animation: visOpacity 1s both 0.8s ease; }
+    .webSlide .txtBox.m h4 { margin-bottom: 10px; padding-left: 28px; font-size: 13px; color: #fff; }
+    .webSlide .txtBox.m h4::before { top: -4px; width: 18px; height: 18px; } 
+    .webSlide .txtBox.m .date { margin-bottom: 4px; font-size: 11px; }
+    .webSlide .txtBox.m .sub { font-size: 11px; font-weight: normal; color: #e1e1e1; text-shadow: 0 1px 1px rgba(0, 0, 0, .4); }
+    .webSlide .txtBox.m .tool li { width: 20px; height: 20px; border-radius: 50%; 
+        background-color: rgba(255, 255, 255, .7); background-size: 80% auto; }
+
+
     .webSlide .phone .top { height: 108px; }
 
     .section.web .txtBox { width: 100%; }
@@ -1295,30 +1321,29 @@ h2 .mobile { display: none; }
     .section.web .txtBox .btnBox a { min-width: 102px; padding: 9px 12px 7px; font-size: 13px; }
     .section.web .txtBox h3 { font-size: 26px; }
     .section.web .txtBox .sort { font-size: 14px; }
-    .section.web .txtBox > ul {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 55%;
-    }
+    
+    .section.web .txtBox > ul { display: none; }
+
+    /* 
+    .section.web .txtBox > ul { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 55%; }
     .section.web .txtBox .explain { margin-bottom: 3vh; margin-left: 0; }
     .fp-viewing-web .section.web .txtBox .explain { animation: visOpacity 1s both 1.8s ease; }
     .section.web .txtBox .tool { margin-left: 0; }
     .fp-viewing-web .section.web .txtBox .tool { animation: visOpacity 1s both 2.2s ease; }
-    .txtBox h4 { 
-        margin-bottom: 10px;
-        padding-left: 28px;
-        font-size: 13px;
-        color: #fff;
-    }
-    .txtBox h4::before { top: -4px; width: 18px; height: 18px; }
+    .txtBox h4 { margin-bottom: 10px; padding-left: 28px; font-size: 13px; color: #fff; }
+    .txtBox h4::before { top: -4px; width: 18px; height: 18px; } 
     .txtBox .date { margin-bottom: 4px; font-size: 11px; }
     .txtBox .sub { font-size: 11px; font-weight: 300; color: rgba(255, 255, 255, .9); }
     .txtBox .tool li { width: 20px; height: 20px; border-radius: 50%; 
         background-color: rgba(255, 255, 255, .7); background-size: 80% auto; }
+    */
+
+
     .popWeb .popView { padding: 12px; }
 
+}
+@media screen and (max-width: 500px){
+    .section.web .txtBox h3 { margin-bottom: 1vh; font-size: 23px; }
 }
 @media screen and (min-width: 1500px) and (min-height: 900px) {
     .fp-viewing-web .webBg::before { width: 100%; height: 77vh; }
@@ -1816,8 +1841,8 @@ h2 .mobile { display: none; }
 }
 @media screen and (max-width: 500px){
     .section.work .inner { gap: 1vh; }
-    .section.work h2 { position: relative; top: 0; left: 0; width: 100%; padding-top: 2vh; }
-    .slideBox { height: 24vh; margin-top: 7vh; margin-bottom: 7vh; }
+    .section.work h2 { position: relative; top: 0; left: 0; width: 100%; padding-top: 0; }
+    .slideBox { height: 24vh; margin-top: 6vh; margin-bottom: 6.5vh; }
     .slideBox .control .arr { display: none; }
     .slideBox .control .page { bottom: calc(100% + 2vh); }
     .slideBox .control .page .swiper-pagination-bullet { margin: 0 6px; }
@@ -1825,8 +1850,8 @@ h2 .mobile { display: none; }
     .slideBox .title::before { right: 22px; }
     .slideBox .step { font-size: 16px; }
     .slideBox h3 { font-size: 16px; }
-    .section.work .txtBox { width: 100%; margin-right: 0; }
-    .section.work .txtBox span { font-size: 13px; }
+    .section.work .txtBox { gap: 0.7vh 0; width: 100%; margin-right: 0; }
+    .section.work .txtBox span { font-size: 12px; }
     .section.work .txtBox .period { margin-right: 6px; padding: 4px 13px 1px 31px;font-size: 12px; }
     .section.work .txtBox .period::before { top: 3px; width: 13px; height: 13px; }
     .section.work .txtBox .day { font-size: 12px; }
@@ -1895,7 +1920,7 @@ h2 .mobile { display: none; }
     background: url(../images/contact/pencil.svg) center no-repeat; 
     background-size: 100% auto;
 }
-.section.contact .greet b { margin-bottom: 3vh; font-size: 18px; font-weight: 500; }
+.section.contact .greet b { margin-bottom: 3vh; font-size: 18px; font-weight: 700; }
 .section.contact .greet p { margin-bottom: 8vh; font-size: 15px; font-weight: 300; }
 .section.contact .greet ul {  }
 .section.contact .greet ul li { position: relative; padding-left: 34px; font-size: 15px; font-weight: 300; }
@@ -2011,16 +2036,16 @@ h2 .mobile { display: none; }
     .section.contact .greet::before { background-size: 60% auto; }
     .section.contact .greet b { margin-bottom: 2vh; font-size: 16px; }
     .section.contact .greet p { margin-bottom: 3vh; font-size: 13px; }
-    .section.contact .greet ul li { font-size: 12px; }
+    .section.contact .greet ul li { font-size: 11px; }
     .section.contact .greet ul li.tel { margin-bottom: 0.5vh; }
     .section.contact .form { width: 100%; margin-top: 0; margin-right: 0; }
     .section.contact .form form { justify-content: center; gap: 3vh 0; }
     .section.contact .form label.half { width: 50%; }
-    .section.contact .form dt { margin-bottom: 0.5vh; }
+    .section.contact .form dt { margin-bottom: 0.5vh; font-size: 12px; }
     .section.contact .form dd input[name=name] { width: calc(100% - 20px); }
-    .section.contact .form dd textarea { height: 9vh; padding: 3px 6px; }
+    .section.contact .form dd textarea { height: 8vh; padding: 3px 6px; }
     .section.contact .form dd textarea::placeholder { font-size: 12px; }
-    .section.contact .form .sendBtn { width: 130px; margin-top: -1vh; padding: 13px 0 11px;  font-size: 15px; }
+    .section.contact .form .sendBtn { width: 130px; margin-top: -1.5vh; padding: 13px 0 11px;  font-size: 15px; }
 }
 @media screen and (min-width: 901px) and (max-height: 750px){   /* 웹에서 height 750 이하일때 */
     .fp-viewing-contact .contactBg::before, .fp-viewing-foot .contactBg::before { height: 60vh; }
