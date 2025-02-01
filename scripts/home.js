@@ -231,7 +231,6 @@ function webSwiperStep(idx){
     let cnt = 0;
     $box.stop().animate(
         { opacity: "0" }, 300, function(){
-            console.log(cnt);
             $box.find(".tit .step").text(items.step);
             $box.find(".tit h3").text(items.title);
             $box.find(".tit .sort").text(items.sort);

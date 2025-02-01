@@ -3,9 +3,3 @@ $(window).on("load", function(){
   $("main").load("views/home.html");
   $("footer").load("views/footer.html");
 });
-
-
-
-
-
-
